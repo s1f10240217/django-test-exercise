@@ -38,7 +38,7 @@ class TaskModelTestCase(TestCase):
         task.save()
 
         self.assertFalse(task.is_overdue(current))
-    
+
     def test_is_overdue_past(self):
         due = timezone.make_aware(datetime(2024, 6, 30, 23, 59, 59))
         current = timezone.make_aware(datetime(2024, 7, 1, 0, 0, 0))
@@ -46,7 +46,7 @@ class TaskModelTestCase(TestCase):
         task.save()
 
         self.assertTrue(task.is_overdue(current))
-    
+
     def test_is_overdue_none(self):
         current = timezone.make_aware(datetime(2024, 7, 1, 0, 0, 0))
         task = Task(title='task1', due_at=None)
